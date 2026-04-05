@@ -1,0 +1,87 @@
+{
+  "version": "1.0.0",
+  "dimensions": {
+    "claude_md_richness": {
+      "weight": 0.25,
+      "max_score": 10,
+      "description": "Quality and completeness of the generated CLAUDE.md",
+      "criteria": {
+        "file_exists": { "points": 1, "description": "CLAUDE.md file exists in project directory" },
+        "word_count_minimum": { "points": 1, "threshold": 50, "description": "At least 50 words" },
+        "word_count_rich": { "points": 1, "threshold": 200, "description": "At least 200 words" },
+        "has_persona_background": { "points": 1, "description": "Contains persona background or 'about' section" },
+        "has_research_goals": { "points": 1, "description": "Contains explicit research goals" },
+        "has_working_method": { "points": 1, "description": "Contains working method or methodology section" },
+        "has_communication_preferences": { "points": 1, "description": "Contains communication or collaboration preferences" },
+        "has_domain_vocabulary": { "points": 1, "description": "Contains domain-specific vocabulary" },
+        "has_project_structure": { "points": 1, "description": "References project structure or key files" },
+        "has_active_questions": { "points": 1, "description": "Contains open questions or future directions" }
+      }
+    },
+    "research_profile_completeness": {
+      "weight": 0.20,
+      "max_score": 10,
+      "description": "How thoroughly the research profile was filled",
+      "criteria": {
+        "file_exists": { "points": 1, "description": "Profile file exists" },
+        "has_name": { "points": 1, "description": "Name field is filled (not placeholder)" },
+        "has_background": { "points": 1, "description": "Background field has substantive content" },
+        "has_technical_level": { "points": 1, "description": "Technical level is specified" },
+        "has_goals_list": { "points": 1, "description": "At least one goal listed" },
+        "has_multiple_goals": { "points": 1, "threshold": 3, "description": "Three or more goals listed" },
+        "has_working_preferences": { "points": 1, "description": "Working preferences section filled" },
+        "has_current_focus": { "points": 1, "description": "Current focus section has content" },
+        "has_future_directions": { "points": 1, "description": "Future directions section filled" },
+        "specificity_score": { "points": 1, "description": "Content is specific (not generic/placeholder)" }
+      }
+    },
+    "rules_appropriateness": {
+      "weight": 0.20,
+      "max_score": 10,
+      "description": "Whether rules are present and customized",
+      "criteria": {
+        "rules_dir_exists": { "points": 1, "description": "Rules directory exists" },
+        "has_rule_files": { "points": 1, "description": "At least one rule file present" },
+        "rules_count_3plus": { "points": 1, "threshold": 3, "description": "Three or more rule files" },
+        "rules_count_5plus": { "points": 1, "threshold": 5, "description": "Five or more rule files" },
+        "not_identical_to_template": { "points": 2, "description": "Rules differ from template (checksum comparison)" },
+        "has_domain_rules": { "points": 1, "description": "At least one domain-specific rule" },
+        "has_research_rules": { "points": 1, "description": "Research methodology rules present" },
+        "has_communication_rules": { "points": 1, "description": "Communication style rules present" },
+        "rules_reference_persona": { "points": 1, "description": "Rules reference persona-specific concepts" }
+      }
+    },
+    "hook_completeness": {
+      "weight": 0.15,
+      "max_score": 10,
+      "description": "Whether hooks and settings are properly configured",
+      "criteria": {
+        "settings_file_exists": { "points": 1, "description": "settings.json exists" },
+        "settings_valid_json": { "points": 2, "description": "settings.json is valid JSON" },
+        "has_permissions": { "points": 1, "description": "Permissions section present" },
+        "has_hooks_section": { "points": 1, "description": "Hooks section present in settings" },
+        "has_session_start_hook": { "points": 1, "description": "SessionStart hook configured" },
+        "has_pre_tool_use_hook": { "points": 1, "description": "PreToolUse hook configured" },
+        "has_post_tool_use_hook": { "points": 1, "description": "PostToolUse hook configured" },
+        "no_placeholder_values": { "points": 1, "description": "No [YOUR-*] or placeholder strings" },
+        "hook_files_exist": { "points": 1, "description": "Referenced hook files actually exist" }
+      }
+    },
+    "research_depth": {
+      "weight": 0.20,
+      "max_score": 10,
+      "description": "Depth of research artifacts produced",
+      "criteria": {
+        "has_research_notes": { "points": 1, "description": "Research notes directory or files exist" },
+        "research_word_count": { "points": 1, "threshold": 100, "description": "Research notes have substantial content" },
+        "has_external_citations": { "points": 2, "description": "Contains URLs or citation references" },
+        "has_domain_terms": { "points": 1, "description": "Uses domain-specific terminology" },
+        "domain_term_count": { "points": 1, "threshold": 5, "description": "Uses 5+ distinct domain terms" },
+        "has_bibliography": { "points": 1, "description": "Bibliography or references file exists" },
+        "has_custom_skills": { "points": 1, "description": "Custom skills were created" },
+        "has_custom_contexts": { "points": 1, "description": "Custom context files created" },
+        "has_structured_output": { "points": 1, "description": "Research organized into structured files/dirs" }
+      }
+    }
+  }
+}

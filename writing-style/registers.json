@@ -1,0 +1,522 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "description": "22-register taxonomy organized into 5 families. Each register describes a distinct writing mode with characteristic linguistic markers and typical use contexts.",
+    "usage": "Registers are blended by the synthesizer to produce a personalized style configuration. A user typically has 1 primary, 1-2 secondary, and 0-2 accent registers."
+  },
+  "families": {
+    "A": "Knowledge Registers",
+    "B": "Professional Registers",
+    "C": "Creative/Expressive Registers",
+    "D": "Persuasive/Relational Registers",
+    "E": "Digital/Contemporary Registers"
+  },
+  "registers": [
+    {
+      "id": "academic-analytical",
+      "name": "Academic-Analytical",
+      "family": "A",
+      "description": "Evidence-based writing with hedged claims, citations, and formal structure. Prioritizes rigor and precision over readability.",
+      "key_features": [
+        "evidence-based argumentation",
+        "hedged claims (may, suggests, appears to)",
+        "citation-heavy",
+        "formal register",
+        "impersonal voice",
+        "structured sections with clear thesis"
+      ],
+      "example_context": "Journal articles, literature reviews, thesis chapters, conference papers",
+      "linguistic_markers": [
+        "passive voice constructions",
+        "nominalizations (investigation, utilization)",
+        "hedging verbs (suggests, indicates, appears)",
+        "discourse markers (however, moreover, furthermore)",
+        "in-text citations",
+        "third-person reference"
+      ]
+    },
+    {
+      "id": "pedagogical",
+      "name": "Pedagogical",
+      "family": "A",
+      "description": "Teaching-oriented writing that scaffolds complexity, leads with examples, and checks understanding. Adjusts density to audience level.",
+      "key_features": [
+        "scaffolded complexity (simple to complex)",
+        "examples-first approach",
+        "checks understanding",
+        "defines terms on first use",
+        "uses analogies and comparisons",
+        "progressive disclosure"
+      ],
+      "example_context": "Textbooks, tutorials, course materials, explainer articles, workshop handouts",
+      "linguistic_markers": [
+        "direct address (you, we)",
+        "signposting (first, next, notice how)",
+        "rhetorical questions",
+        "definition patterns (X is... / By X, we mean...)",
+        "example introducers (for instance, consider, imagine)",
+        "comprehension checks (does this make sense?, to recap)"
+      ]
+    },
+    {
+      "id": "technical-referential",
+      "name": "Technical-Referential",
+      "family": "A",
+      "description": "Precise, terminology-dense writing that assumes domain knowledge. Procedural and efficient, minimal personality.",
+      "key_features": [
+        "precise terminology without explanation",
+        "procedural structure",
+        "minimal personality or narrative",
+        "assumes domain knowledge",
+        "specification-oriented",
+        "exhaustive parameter documentation"
+      ],
+      "example_context": "API documentation, technical specifications, engineering reports, reference manuals",
+      "linguistic_markers": [
+        "imperative mood (run, configure, set)",
+        "jargon without definition",
+        "numbered procedures",
+        "conditional structures (if X, then Y)",
+        "code blocks and inline code",
+        "terse sentence structure"
+      ]
+    },
+    {
+      "id": "popularizing-explainer",
+      "name": "Popularizing-Explainer",
+      "family": "A",
+      "description": "Makes complex topics accessible through analogies, narrative hooks, and controlled jargon introduction. Bridges expert knowledge to general audiences.",
+      "key_features": [
+        "accessible language",
+        "rich analogies and metaphors",
+        "narrative hooks to sustain interest",
+        "controlled jargon introduction",
+        "concrete examples from everyday life",
+        "builds intuition before formalism"
+      ],
+      "example_context": "Science journalism, popular books, TED-style talks, explainer videos, blog posts for general audiences",
+      "linguistic_markers": [
+        "imagine if... / think of it like...",
+        "short paragraphs",
+        "conversational asides",
+        "jargon introduced with immediate definition",
+        "anecdotes and stories",
+        "active voice"
+      ]
+    },
+    {
+      "id": "corporate-institutional",
+      "name": "Corporate-Institutional",
+      "family": "B",
+      "description": "Polished, risk-averse writing oriented toward stakeholders. Heavy hedging, passive constructions, and carefully managed tone.",
+      "key_features": [
+        "polished and professional",
+        "risk-averse framing",
+        "stakeholder-aware",
+        "heavy hedging",
+        "passive voice preference",
+        "brand-consistent tone"
+      ],
+      "example_context": "Press releases, annual reports, internal memos, corporate blog posts, stakeholder communications",
+      "linguistic_markers": [
+        "we are pleased to...",
+        "strategic / leverage / synergy vocabulary",
+        "passive constructions (it was determined that...)",
+        "future-oriented language",
+        "diplomatic hedging (at this time, going forward)",
+        "collective we"
+      ]
+    },
+    {
+      "id": "consultative-advisory",
+      "name": "Consultative-Advisory",
+      "family": "B",
+      "description": "Diagnostic, recommendation-oriented writing that presents options with trade-offs. Structured around problems and solutions.",
+      "key_features": [
+        "diagnostic framing",
+        "recommendation-oriented",
+        "options with trade-offs",
+        "evidence-backed suggestions",
+        "clear action items",
+        "stakeholder-sensitive"
+      ],
+      "example_context": "Consulting reports, strategy documents, advisory memos, proposal responses, recommendation letters",
+      "linguistic_markers": [
+        "we recommend... / our assessment is...",
+        "option A vs option B structures",
+        "risk/benefit framing",
+        "based on our analysis...",
+        "next steps enumeration",
+        "conditional recommendations (if X, consider Y)"
+      ]
+    },
+    {
+      "id": "journalistic-reportorial",
+      "name": "Journalistic-Reportorial",
+      "family": "B",
+      "description": "Lead-first, factual writing that attributes sources and maintains neutral stance. Inverted pyramid structure.",
+      "key_features": [
+        "inverted pyramid structure",
+        "lead-first (most important info upfront)",
+        "source attribution",
+        "neutral stance",
+        "factual density",
+        "accessible to general readers"
+      ],
+      "example_context": "News articles, feature stories, investigative reports, press coverage, magazine articles",
+      "linguistic_markers": [
+        "attribution phrases (according to, X said)",
+        "short paragraphs (1-3 sentences)",
+        "active voice",
+        "concrete specifics (dates, numbers, names)",
+        "minimal adjectives",
+        "quote integration"
+      ]
+    },
+    {
+      "id": "legal-regulatory",
+      "name": "Legal-Regulatory",
+      "family": "B",
+      "description": "Precise, exhaustive writing with defined terms and conditional structures. Leaves no room for ambiguity.",
+      "key_features": [
+        "extreme precision",
+        "exhaustive coverage",
+        "defined terms (capitalized)",
+        "conditional structures",
+        "no ambiguity tolerance",
+        "precedent-aware"
+      ],
+      "example_context": "Contracts, terms of service, regulatory filings, compliance documents, policy documents",
+      "linguistic_markers": [
+        "shall / must / herein / thereof",
+        "notwithstanding / subject to / pursuant to",
+        "defined terms in capitals",
+        "nested conditional clauses",
+        "enumerated lists with legal numbering",
+        "provided that / except where"
+      ]
+    },
+    {
+      "id": "literary-poetic",
+      "name": "Literary-Poetic",
+      "family": "C",
+      "description": "Rhythm-aware writing that prioritizes aesthetic quality. Figurative language, compression, and sound-sense interplay.",
+      "key_features": [
+        "rhythm and prosody awareness",
+        "figurative language (metaphor, simile, synecdoche)",
+        "compression and economy",
+        "aesthetic priority over clarity",
+        "sound-sense interplay",
+        "image-driven"
+      ],
+      "example_context": "Poetry, literary fiction, lyric essays, experimental prose, artist statements",
+      "linguistic_markers": [
+        "metaphor and simile",
+        "assonance and alliteration",
+        "sentence fragments for effect",
+        "unusual word choices",
+        "white space as punctuation",
+        "concrete imagery over abstraction"
+      ]
+    },
+    {
+      "id": "narrative-storytelling",
+      "name": "Narrative-Storytelling",
+      "family": "C",
+      "description": "Arc-driven writing with character, scene, and temporal flow. Uses suspense, reveal, and pacing to sustain engagement.",
+      "key_features": [
+        "arc structure (setup, tension, resolution)",
+        "character and scene establishment",
+        "temporal flow",
+        "suspense and reveal",
+        "sensory detail",
+        "dialogue integration"
+      ],
+      "example_context": "Narrative nonfiction, case studies told as stories, memoir, feature articles, content marketing",
+      "linguistic_markers": [
+        "temporal markers (one morning, three years later)",
+        "scene-setting descriptions",
+        "dialogue",
+        "internal monologue",
+        "pacing variation (short/long sentences)",
+        "foreshadowing"
+      ]
+    },
+    {
+      "id": "design-critical",
+      "name": "Design-Critical",
+      "family": "C",
+      "description": "Aesthetic vocabulary with spatial and material awareness. Positions work within cultural and historical context.",
+      "key_features": [
+        "aesthetic vocabulary",
+        "spatial and material awareness",
+        "cultural positioning",
+        "historical contextualization",
+        "formal analysis (color, form, composition)",
+        "interpretive frameworks"
+      ],
+      "example_context": "Art criticism, design reviews, exhibition catalogs, architecture writing, curatorial essays",
+      "linguistic_markers": [
+        "formal vocabulary (juxtaposition, tension, gesture)",
+        "material references (texture, weight, grain)",
+        "cultural references",
+        "present tense for analysis",
+        "spatial prepositions (within, across, between)",
+        "interpretive hedging (evokes, suggests, recalls)"
+      ]
+    },
+    {
+      "id": "lyrical-reflective",
+      "name": "Lyrical-Reflective",
+      "family": "C",
+      "description": "Meditative, first-person writing with sensory language and associative structure. Personal and exploratory.",
+      "key_features": [
+        "meditative tone",
+        "first-person perspective",
+        "sensory language",
+        "associative structure",
+        "personal and exploratory",
+        "comfortable with ambiguity"
+      ],
+      "example_context": "Personal essays, memoir passages, reflective journals, artist notebooks, creative nonfiction",
+      "linguistic_markers": [
+        "I remember / I notice / I wonder",
+        "sensory descriptions (light, sound, texture)",
+        "associative leaps",
+        "present tense for immediacy",
+        "parenthetical asides",
+        "open-ended questions"
+      ]
+    },
+    {
+      "id": "advocacy-persuasive",
+      "name": "Advocacy-Persuasive",
+      "family": "D",
+      "description": "Call-to-action writing that combines emotional appeal with evidence. Values-driven, urgent, and outcome-oriented.",
+      "key_features": [
+        "call-to-action",
+        "emotional appeal combined with evidence",
+        "urgency",
+        "values-driven framing",
+        "outcome-oriented",
+        "audience mobilization"
+      ],
+      "example_context": "Grant proposals, op-eds, campaign materials, fundraising letters, manifestos",
+      "linguistic_markers": [
+        "imperative mood (join, support, act)",
+        "rhetorical questions",
+        "statistics paired with stories",
+        "moral framing (must, deserve, owe)",
+        "future-oriented vision",
+        "repetition for emphasis"
+      ]
+    },
+    {
+      "id": "facilitative-workshop",
+      "name": "Facilitative-Workshop",
+      "family": "D",
+      "description": "Invitational writing that poses questions, holds space for multiple perspectives, and drives toward action.",
+      "key_features": [
+        "invitational tone",
+        "question-posing",
+        "holds space for multiple perspectives",
+        "action-oriented",
+        "process-aware",
+        "group-oriented"
+      ],
+      "example_context": "Workshop descriptions, facilitation guides, discussion prompts, collaborative design briefs",
+      "linguistic_markers": [
+        "what if... / how might we...",
+        "inclusive we and let's",
+        "invitational language (explore, discover, consider)",
+        "open questions",
+        "acknowledgment of complexity",
+        "action verbs (build, create, design)"
+      ]
+    },
+    {
+      "id": "conversational-collegial",
+      "name": "Conversational-Collegial",
+      "family": "D",
+      "description": "Warm, peer-level writing with contractions, rhetorical questions, and inclusive language. Approachable but substantive.",
+      "key_features": [
+        "warm and approachable",
+        "peer-level address",
+        "contractions",
+        "rhetorical questions",
+        "inclusive language",
+        "substantive despite informality"
+      ],
+      "example_context": "Team communications, peer reviews, blog posts, informal talks, Slack messages",
+      "linguistic_markers": [
+        "contractions (I'm, we've, that's)",
+        "rhetorical questions",
+        "inclusive we",
+        "colloquial phrases",
+        "parenthetical asides and em-dashes",
+        "humor and self-deprecation"
+      ]
+    },
+    {
+      "id": "mentoring-coaching",
+      "name": "Mentoring-Coaching",
+      "family": "D",
+      "description": "Supportive but challenging writing that uses Socratic questioning, celebrates progress, and reframes setbacks constructively.",
+      "key_features": [
+        "supportive but challenging",
+        "Socratic questioning",
+        "celebrates progress",
+        "reframes setbacks",
+        "developmental orientation",
+        "personalized feedback"
+      ],
+      "example_context": "Feedback letters, mentoring notes, coaching frameworks, developmental reviews, teaching comments",
+      "linguistic_markers": [
+        "what do you think would happen if...",
+        "I notice that you... / have you considered...",
+        "strength-based language",
+        "growth framing (yet, developing, building toward)",
+        "specific praise followed by challenge",
+        "forward-looking questions"
+      ]
+    },
+    {
+      "id": "social-thread",
+      "name": "Social-Thread",
+      "family": "E",
+      "description": "Fragmentary, hook-driven writing that builds across posts. Conversational pacing optimized for scroll and engagement.",
+      "key_features": [
+        "fragmentary structure",
+        "hook-driven openings",
+        "builds across posts/threads",
+        "conversational pacing",
+        "engagement-optimized",
+        "shareable insight density"
+      ],
+      "example_context": "Twitter/X threads, LinkedIn posts, Mastodon threads, Bluesky posts",
+      "linguistic_markers": [
+        "hook opening (hot take: / unpopular opinion: / thread:)",
+        "numbered posts (1/, 2/)",
+        "short paragraphs (1-2 sentences)",
+        "emoji as punctuation (sparingly)",
+        "call-to-engage (thoughts? / what am I missing?)",
+        "cliffhanger transitions"
+      ]
+    },
+    {
+      "id": "caption-micro",
+      "name": "Caption-Micro",
+      "family": "E",
+      "description": "Ultra-compressed writing paired with visuals. Punchy, hashtag-aware, and optimized for thumbnail attention spans.",
+      "key_features": [
+        "ultra-compressed",
+        "visual-paired",
+        "punchy and memorable",
+        "hashtag-aware",
+        "attention-optimized",
+        "standalone impact"
+      ],
+      "example_context": "Instagram captions, image descriptions, exhibition labels, poster text, social media cards",
+      "linguistic_markers": [
+        "sentence fragments",
+        "visual references (this / here / ^)",
+        "hashtags",
+        "line breaks for emphasis",
+        "wordplay and puns",
+        "call-to-action (link in bio, swipe)"
+      ]
+    },
+    {
+      "id": "newsletter-epistolary",
+      "name": "Newsletter-Epistolary",
+      "family": "E",
+      "description": "Direct address writing that builds relationships over time. Personal but curated, balancing intimacy with professionalism.",
+      "key_features": [
+        "direct address",
+        "personal but curated",
+        "relationship-building over time",
+        "consistent voice across editions",
+        "value-delivery focused",
+        "subscriber intimacy"
+      ],
+      "example_context": "Email newsletters, Substack posts, membership updates, digest formats",
+      "linguistic_markers": [
+        "greeting (hey, hi friends, dear reader)",
+        "personal anecdotes as hooks",
+        "second-person address",
+        "section headers as navigation",
+        "sign-off personality",
+        "PS as engagement tool"
+      ]
+    },
+    {
+      "id": "oral-presentational",
+      "name": "Oral-Presentational",
+      "family": "E",
+      "description": "Written-for-speaking text with shorter sentences, heavy signposting, and strategic repetition for oral delivery.",
+      "key_features": [
+        "written for speaking",
+        "shorter sentences",
+        "heavy signposting",
+        "strategic repetition",
+        "audience awareness",
+        "pause-friendly rhythm"
+      ],
+      "example_context": "Conference talks, keynotes, panel remarks, lecture notes, podcast scripts",
+      "linguistic_markers": [
+        "so / now / here's the thing",
+        "rhetorical questions",
+        "repetition of key phrases",
+        "short declarative sentences",
+        "pause markers (embedded dashes, ellipses)",
+        "audience address (you might be wondering)"
+      ]
+    },
+    {
+      "id": "documentation-instructional",
+      "name": "Documentation-Instructional",
+      "family": "E",
+      "description": "Step-by-step writing in imperative mood. Scannable, task-oriented, and optimized for people who need to do something now.",
+      "key_features": [
+        "step-by-step structure",
+        "imperative mood",
+        "scannable layout",
+        "task-oriented",
+        "prerequisites stated upfront",
+        "troubleshooting sections"
+      ],
+      "example_context": "How-to guides, setup instructions, runbooks, onboarding docs, README files",
+      "linguistic_markers": [
+        "imperative verbs (install, create, run, open)",
+        "numbered steps",
+        "code blocks",
+        "note/warning/tip callouts",
+        "prerequisites lists",
+        "expected output descriptions"
+      ]
+    },
+    {
+      "id": "interdisciplinary-bridge",
+      "name": "Interdisciplinary-Bridge",
+      "family": "E",
+      "description": "Translates concepts between domains using explicit analogies and dual-vocabulary definitions. Assumes readers know one field but not the other.",
+      "key_features": [
+        "cross-domain translation",
+        "explicit analogies between fields",
+        "defines terms from both fields",
+        "bridges jargon gaps",
+        "highlights structural parallels",
+        "respects both domains equally"
+      ],
+      "example_context": "Interdisciplinary papers, cross-field blog posts, design-meets-engineering writing, art-science essays",
+      "linguistic_markers": [
+        "in X terms, this is like... / what Y calls Z",
+        "parallel definitions (in design... / in mathematics...)",
+        "bridging phrases (similarly, the same principle applies)",
+        "explicit framing of which audience is being addressed",
+        "footnotes or asides for domain-specific depth",
+        "structural analogy (just as X does Y, so Z does W)"
+      ]
+    }
+  ]
+}

@@ -20,6 +20,8 @@ my environment."**
 | **references/** | Guides on writing skills, commands, and agents |
 | **CONCEPTS.md** | Quick explainer: what are skills, commands, agents, hooks? |
 | **RESEARCH-PROFILE.md** | Starter profile for research-focused work |
+| **writing-style/** | Writing style abstraction: 22 registers, 10 dimensions, interview + synthesizer |
+| **test-framework/** | Automated persona testing: 2 simulated users, quality scoring, comparison reports |
 
 ## How To Use
 

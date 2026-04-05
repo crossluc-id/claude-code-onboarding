@@ -4,3 +4,5 @@ node_modules/
 *.bak
 .env
 .env.*
+test-framework/results/*
+!test-framework/results/.gitignore
