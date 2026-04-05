@@ -10,7 +10,7 @@
 #
 # Configure threshold with COMPACT_THRESHOLD env var (default: 50)
 
-SESSION_ID="${CLAUDE_SESSION_ID:-${PPID:-default}}"
+SESSION_ID="${CLAUDE_SESSION_ID:-default}"
 COUNTER_FILE="/tmp/claude-tool-count-${SESSION_ID}"
 THRESHOLD=${COMPACT_THRESHOLD:-50}
 

@@ -188,7 +188,7 @@ Then try these:
 4. **"What skills are available?"** — Lists loaded skills
 
 If something doesn't work, check:
-- API keys are set: `echo $EXA_API_KEY` and `echo $GITHUB_TOKEN`
+- API keys are set: `[[ -n "$EXA_API_KEY" ]] && echo "SET"` and `[[ -n "$GITHUB_TOKEN" ]] && echo "SET"`
 - Plugins installed: look in `~/.claude/plugins/`
 - MCP servers: `claude --mcp-debug` to diagnose
 

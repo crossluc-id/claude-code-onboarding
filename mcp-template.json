@@ -1,10 +1,5 @@
 {
-  "_comments": {
-    "usage": "Copy to ~/.claude/.mcp.json",
-    "env_vars": "Set EXA_API_KEY and GITHUB_TOKEN in your shell profile (~/.zshrc)",
-    "disabling": "Remove or comment out servers you don't need",
-    "context_warning": "Keep under 10 MCPs enabled to preserve context window"
-  },
+  "_comment": "Copy to ~/.claude/.mcp.json. Set EXA_API_KEY and GITHUB_TOKEN in ~/.zshrc. Keep under 10 MCPs to preserve context window.",
   "mcpServers": {
     "exa": {
       "command": "npx",
