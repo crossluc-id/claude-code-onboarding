@@ -18,8 +18,8 @@
     },
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users"],
-      "description": "Enhanced filesystem operations — read, write, search files"
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "REPLACE_WITH_YOUR_HOME_DIRECTORY"],
+      "description": "Enhanced filesystem operations — read, write, search files. IMPORTANT: Replace REPLACE_WITH_YOUR_HOME_DIRECTORY with your actual home path (e.g., /Users/yourname on macOS, /home/yourname on Linux)"
     },
     "sequential-thinking": {
       "command": "npx",

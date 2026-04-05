@@ -41,5 +41,5 @@ Edit it to match your situation, then Claude will use it to tailor suggestions.
 
 ---
 
-*Save this as `~/.claude/CLAUDE.md` in a project folder, or reference it
-in your global CLAUDE.md. Claude will read it at session start.*
+*Save this as `CLAUDE.md` in your project folder, or incorporate relevant
+sections into your global `~/.claude/CLAUDE.md`. Claude reads both at session start.*

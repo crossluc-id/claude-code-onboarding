@@ -62,7 +62,6 @@ cp rules/*.md ~/.claude/rules/
 
 # Hooks
 cp hooks/*.sh ~/.claude/hooks/
-cp hooks/*.js ~/.claude/hooks/
 chmod +x ~/.claude/hooks/*.sh
 
 # Libraries

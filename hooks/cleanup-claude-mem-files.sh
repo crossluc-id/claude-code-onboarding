@@ -24,8 +24,12 @@ for dir in "${PROJECT_DIRS[@]}"; do
   while IFS= read -r -d '' file; do
     [[ "$file" == */node_modules/* ]] && continue
 
-    # Strip <claude-mem-context>...</claude-mem-context> blocks
-    sed -i '' '/<claude-mem-context>/,/<\/claude-mem-context>/d' "$file"
+    # Strip <claude-mem-context>...</claude-mem-context> blocks (cross-platform)
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      sed -i '' '/<claude-mem-context>/,/<\/claude-mem-context>/d' "$file"
+    else
+      sed -i '/<claude-mem-context>/,/<\/claude-mem-context>/d' "$file"
+    fi
 
     # If file is now empty or whitespace-only, delete it
     if [ ! -s "$file" ] || ! grep -q '[^[:space:]]' "$file"; then

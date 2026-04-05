@@ -1,7 +1,7 @@
 # Claude Code Concepts — Quick Reference
 
 Claude Code is a terminal-based AI assistant. Out of the box it's powerful, but
-you can extend it with **5 building blocks**. Here's what each one is:
+you can extend it with **7 building blocks**. Here's what each one is:
 
 ---
 

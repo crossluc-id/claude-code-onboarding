@@ -14,7 +14,8 @@ and can be imported when you build your own custom hooks.
 
 These are imported by hooks like:
 ```javascript
-const { readFile, writeFile, getClaudeDir } = require('~/.claude/lib/utils.js');
+const path = require('path');
+const { readFile, writeFile, getClaudeDir } = require(path.join(require('os').homedir(), '.claude/lib/utils.js'));
 ```
 
 You don't need to modify these unless you're building custom hooks.

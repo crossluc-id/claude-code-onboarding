@@ -1,5 +1,5 @@
 {
-  "_comment": "Claude Code settings — copy to ~/.claude/settings.json",
+  "_comment": "Claude Code settings — copy to ~/.claude/settings.json. Plugin-specific permissions (mcp__plugin_*) activate after you install the corresponding plugins in Step 5.",
   "permissions": {
     "allow": [
       "WebSearch",
@@ -44,7 +44,7 @@
         ]
       },
       {
-        "matcher": "tool == \"Write\" && tool_input.file_path matches \"\\.(md|txt)$\" && !(tool_input.file_path matches \"README\\.md|CLAUDE\\.md|AGENTS\\.md|CONTRIBUTING\\.md|SKILL\\.md|MEMORY\\.md\")",
+        "matcher": "Write",
         "hooks": [
           {
             "type": "command",
