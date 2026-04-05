@@ -51,6 +51,16 @@
             "command": "node -e \"const fs=require('fs');let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const i=JSON.parse(d);const p=i.tool_input?.file_path||'';if(/\\.(md|txt)$/.test(p)&&!/(README|CLAUDE|AGENTS|CONTRIBUTING|SKILL|MEMORY)\\.md$/.test(p)){console.error('[Hook] BLOCKED: Unnecessary documentation file creation');console.error('[Hook] File: '+p);console.error('[Hook] Allowed: README.md, CLAUDE.md, AGENTS.md, CONTRIBUTING.md, SKILL.md, MEMORY.md');process.exit(1)}console.log(d)})\""
           }
         ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/validate-artifact.js\"",
+            "timeout": 5
+          }
+        ]
       }
     ],
     "PostToolUse": [

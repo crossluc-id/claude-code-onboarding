@@ -8,6 +8,7 @@
 ### PreToolUse
 - `suggest-compact.sh` — suggests manual `/compact` at configurable tool-call threshold (default 50, reminds every 25 after)
 - md/txt file blocker — prevents creation of random .md/.txt files (allows README, CLAUDE, AGENTS, CONTRIBUTING, SKILL, MEMORY)
+- `validate-artifact.js` — validates skills, commands, and agents in real-time (blocks broken frontmatter, warns on quality issues)
 
 ### PostToolUse
 - console.log warner — warns about `console.log` in JS/TS files after edit

@@ -60,8 +60,9 @@ cp mcp-template.json ~/.claude/.mcp.json
 # Rules
 cp rules/*.md ~/.claude/rules/
 
-# Hooks
+# Hooks (shell scripts + JS validators)
 cp hooks/*.sh ~/.claude/hooks/
+cp hooks/*.js ~/.claude/hooks/
 chmod +x ~/.claude/hooks/*.sh
 
 # Libraries
