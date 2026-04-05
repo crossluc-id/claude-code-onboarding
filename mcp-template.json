@@ -1,0 +1,30 @@
+{
+  "_comments": {
+    "usage": "Copy to ~/.claude/.mcp.json",
+    "env_vars": "Set EXA_API_KEY and GITHUB_TOKEN in your shell profile (~/.zshrc)",
+    "disabling": "Remove or comment out servers you don't need",
+    "context_warning": "Keep under 10 MCPs enabled to preserve context window"
+  },
+  "mcpServers": {
+    "exa": {
+      "command": "npx",
+      "args": ["-y", "exa-mcp-server"],
+      "description": "Exa AI neural search — deep web research, code context, academic search (needs EXA_API_KEY in shell)"
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "description": "GitHub API — repos, PRs, issues, code search (needs GITHUB_TOKEN in shell)"
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users"],
+      "description": "Enhanced filesystem operations — read, write, search files"
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "description": "Multi-step reasoning — helps Claude think through complex problems step by step"
+    }
+  }
+}
