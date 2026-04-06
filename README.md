@@ -16,8 +16,10 @@ my environment."**
 | **rules/** | Universal best-practice rules for Claude's behavior |
 | **hooks/** | Automation scripts that run during your sessions |
 | **lib/** | Shared utility libraries for hooks and scripts |
-| **contexts/** | Mode-switching contexts (e.g., research mode) |
+| **contexts/** | Mode-switching contexts (research mode, advisor mode) |
+| **commands/** | Custom commands (`/what-next` — fresh-eyes project suggestions) |
 | **references/** | Guides on writing skills, commands, and agents |
+| **docs/** | Plugin audit and reference materials |
 | **CONCEPTS.md** | Quick explainer: what are skills, commands, agents, hooks? |
 | **RESEARCH-PROFILE.md** | Starter profile for research-focused work |
 

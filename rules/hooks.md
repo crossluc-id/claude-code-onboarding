@@ -4,6 +4,7 @@
 
 ### SessionStart
 - `cleanup-claude-mem-files.sh` — cleans stale auto-generated CLAUDE.md files from claude-mem
+- `advisor-nudge.sh` — once per session, prompts the agent to observe the project with fresh eyes and suggest opportunities
 
 ### PreToolUse
 - `suggest-compact.sh` — suggests manual `/compact` at configurable tool-call threshold (default 50, reminds every 25 after)
