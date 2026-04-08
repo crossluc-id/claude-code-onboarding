@@ -27,7 +27,8 @@ https://claudecodeguides.com/zed-editor-ai-features-review-for-developers-2026/
 A detailed look at how Zed and Claude work together — setup, configuration, and practical examples of the integration. Useful for understanding why Zed was chosen as your editor and how to get the most from it.
 
 **Affaan Mustafa's ECC Walkthrough (X thread)**
-An overview of the Everything Claude Code system that powers many of the skills in your setup. Short, visual, and gives you a feel for the broader ecosystem of capabilities available to you.
+https://x.com/AffaanMustafa
+Search for "Everything Claude Code" on Affaan's profile. An overview of the ECC system that powers many of the skills in your setup. Short, visual, and gives you a feel for the broader ecosystem of capabilities available to you.
 
 ---
 
@@ -89,3 +90,7 @@ How analytics tools connect to Claude. Useful when you want Claude to understand
 ---
 
 The ecosystem around Claude Code is growing quickly. New plugins, skills, and integrations appear regularly. You do not need to track this yourself — Claude reads the ecosystem discovery map and can help you find new resources as they become relevant to your work. When you are curious about what is new, just ask.
+
+---
+
+*For a reference of what each piece does, see [concepts.md](concepts.md). For the philosophy behind the system, see [method.md](method.md). To revisit setup, see [GETTING-STARTED.md](../../GETTING-STARTED.md).*

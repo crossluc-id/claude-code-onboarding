@@ -8,7 +8,7 @@ Here's what the pieces are:
 
 - **Claude Code** is an AI that lives in your computer's terminal. You talk to it by typing, and it builds things with you through conversation -- websites, documents, systems, whatever you need.
 - **Zed** is a modern code editor. It's where you see, read, and touch the files Claude creates. Think of it as your window into the project.
-- **This workspace** is a pre-configured environment with tools, skills, and knowledge that makes Claude significantly more capable than a fresh install. It's the difference between hiring someone on their first day and hiring someone who's already been briefed on your work.
+- **This workspace** is the folder you received -- a pre-configured environment with tools, skills, and knowledge that makes Claude significantly more capable than a fresh install. It's the difference between hiring someone on their first day and hiring someone who's already been briefed on your work. When you open it in Zed (File > Open Folder), you'll see all the pieces inside.
 
 How they work together: you talk to Claude in the terminal (or Zed's built-in terminal panel), Claude writes code and creates files, and you see everything appear in Zed in real time.
 
@@ -147,7 +147,15 @@ mkdir -p ~/.claude/skills
 
 ### Copy baseline rules
 
-Rules shape how Claude approaches work -- like giving a collaborator a style guide. Copy these from the workspace:
+Rules shape how Claude approaches work -- like giving a collaborator a style guide. First, navigate to the workspace folder in your terminal. If you opened it in Zed, the terminal panel is already in the right place. Otherwise:
+
+```
+cd /path/to/your/workspace
+```
+
+Replace `/path/to/your/workspace` with wherever you saved the folder you received (e.g., `cd ~/Downloads/workspace` or `cd ~/Desktop/workspace`).
+
+Now copy the rule files:
 
 ```
 cp -n rules/agents.md ~/.claude/rules/
@@ -217,7 +225,7 @@ Configuration is done. Time to build something. Pick whichever path appeals to y
 
 ### Path A: Build Your Website
 
-Create a new folder, open it in Zed, and start Claude:
+Create a new folder, open it in Zed (File > Open Folder), and start Claude in the terminal panel:
 
 ```
 mkdir ~/my-website

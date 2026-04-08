@@ -1,6 +1,6 @@
 # Concepts Reference
 
-This is the "what is what" document. It explains each piece of the system so you can understand what you're working with. It assumes you've already completed [GETTING-STARTED.md](/workspace/GETTING-STARTED.md) and have a working setup.
+This is the "what is what" document. It explains each piece of the system so you can understand what you're working with. It assumes you've already completed [GETTING-STARTED.md](../../GETTING-STARTED.md) and have a working setup.
 
 When you want to understand *why* the system works the way it does, see [method.md](method.md). When you're ready for deeper learning, see [learning-path.md](learning-path.md).
 
