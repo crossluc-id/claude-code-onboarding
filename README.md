@@ -32,7 +32,7 @@ my environment."**
 
 ## Need Help?
 
-- Claude Code docs: https://docs.anthropic.com/en/docs/claude-code
-- ECC guides: after plugin install, check `~/.claude/plugins/marketplaces/everything-claude-code/the-shortform-guide.md`
-- Superpowers: https://github.com/nichochar/superpowers
+- Claude Code docs: https://docs.claude.com/en/docs/claude-code
+- ECC guides: after plugin install, check `~/.claude/plugins/marketplaces/ecc/the-shortform-guide.md`
+- Superpowers: https://github.com/obra/superpowers
 - Report issues: https://github.com/anthropics/claude-code/issues

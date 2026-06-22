@@ -7,15 +7,27 @@ A step-by-step walkthrough from zero to fully configured.
 ## Step 1: Install Claude Code
 
 ### Prerequisites
-- **Node.js 18+** — check with `node --version`. Install from https://nodejs.org if needed.
 - **Git** — check with `git --version`. Install from https://git-scm.com if needed.
 - **A terminal** — Terminal.app (Mac), iTerm2, or any terminal you're comfortable with.
+- **Node.js 18+** — recommended. The CLI no longer requires it, but several MCP servers and CLI tools (mgrep, agent-browser, claude-mem) run on Node. Check with `node --version`; install from https://nodejs.org if needed.
 
 ### Install Claude Code
 
+The recommended way is the native installer (auto-updates, no Node required for the CLI itself):
+
 ```bash
-npm install -g @anthropic-ai/claude-code
+# macOS / Linux / WSL
+curl -fsSL https://claude.ai/install.sh | bash
 ```
+
+```powershell
+# Windows (PowerShell)
+irm https://claude.ai/install.ps1 | iex
+```
+
+Also available: `brew install --cask claude-code` (macOS) or `winget install Anthropic.ClaudeCode` (Windows).
+
+**Advanced / alternative:** if you prefer npm, `npm install -g @anthropic-ai/claude-code` still works (needs Node.js 18+).
 
 ### First Launch
 
@@ -84,9 +96,9 @@ Some tools need API keys. Add these to your shell profile (`~/.zshrc` or `~/.bas
 # Required for Exa neural search (get key at https://exa.ai)
 export EXA_API_KEY="your-exa-api-key-here"
 
-# Required for GitHub MCP (get token at https://github.com/settings/tokens)
-# Needs: repo, read:org, read:user scopes
-export GITHUB_TOKEN="your-github-token-here"
+# Optional — only if you use the gh CLI or a token-based GitHub setup.
+# The github plugin (Step 5) authenticates via OAuth and does NOT need this.
+# export GITHUB_TOKEN="your-github-token-here"   # scopes: repo, read:org, read:user
 ```
 
 Then reload your shell:
@@ -99,27 +111,52 @@ source ~/.zshrc  # or source ~/.bashrc
 - **EXA_API_KEY** — Powers deep web research. Exa is a neural search engine
   that finds relevant content much better than Google for research tasks.
   Free tier available at https://exa.ai.
-- **GITHUB_TOKEN** — Lets Claude interact with GitHub (create repos, PRs,
-  search code). Get a personal access token from GitHub Settings > Developer
-  Settings > Personal Access Tokens.
+- **GITHUB_TOKEN** — Optional. The `github` plugin now signs in with GitHub via
+  OAuth, so you no longer need a personal access token for normal use. Set one
+  only if you rely on the `gh` CLI or want token-based auth.
 
 ---
 
 ## Step 5: Install Plugins
 
-Plugins add pre-built skills, agents, and commands. Open Claude Code and run:
+Plugins add pre-built skills, agents, and commands. Claude Code 2.x manages them
+with the `/plugin` command — the old `/install-plugin` command no longer exists.
+
+#### 5a. Add the community marketplaces (one time)
+
+The official Anthropic marketplace (`claude-plugins-official`) is built in. A few
+recommended plugins live in community marketplaces you register once:
 
 ```
-/install-plugin superpowers@superpowers-dev
-/install-plugin everything-claude-code@everything-claude-code
-/install-plugin commit-commands@claude-plugins-official
-/install-plugin code-review@claude-plugins-official
-/install-plugin mgrep@Mixedbread-Grep
-/install-plugin claude-mem@thedotmack
-/install-plugin compound-engineering@every-marketplace
-/install-plugin context7@claude-plugins-official
-/install-plugin github@claude-plugins-official
+/plugin marketplace add affaan-m/everything-claude-code
+/plugin marketplace add mixedbread-ai/mgrep
+/plugin marketplace add thedotmack/claude-mem
+/plugin marketplace add EveryInc/compound-engineering-plugin
 ```
+
+> Tip: run `/plugin` with no arguments any time to open the interactive browser
+> (Discover / Installed / Marketplaces tabs) instead of typing commands.
+
+#### 5b. Install the plugins
+
+```
+/plugin install superpowers@claude-plugins-official
+/plugin install ecc@ecc
+/plugin install commit-commands@claude-plugins-official
+/plugin install code-review@claude-plugins-official
+/plugin install context7@claude-plugins-official
+/plugin install github@claude-plugins-official
+/plugin install mgrep@Mixedbread-Grep
+/plugin install claude-mem@thedotmack
+/plugin install compound-engineering@compound-engineering-plugin
+```
+
+> **What changed since early 2026:** the command is now `/plugin install` (not
+> `/install-plugin`); the ECC marketplace was shortened from
+> `everything-claude-code@everything-claude-code` to **`ecc@ecc`**;
+> compound-engineering's marketplace is **`compound-engineering-plugin`**; and
+> superpowers is now on the official marketplace, so no extra marketplace-add is
+> needed for it.
 
 **What each plugin does:**
 
@@ -140,7 +177,8 @@ Plugins add pre-built skills, agents, and commands. Open Claude Code and run:
 If you want to talk to Claude instead of typing:
 
 ```
-/install-plugin voicemode@voicemode
+/plugin marketplace add mbailey/voicemode
+/plugin install voicemode@voicemode
 /voicemode:install
 ```
 
@@ -149,7 +187,7 @@ If you want to talk to Claude instead of typing:
 To create your own custom skills from patterns you discover:
 
 ```
-/install-plugin skill-creator@claude-plugins-official
+/plugin install skill-creator@claude-plugins-official
 ```
 
 ---
@@ -159,14 +197,16 @@ To create your own custom skills from patterns you discover:
 Some plugins need command-line tools installed:
 
 ```bash
-# Semantic search (replaces grep with AI-powered search)
-npm install -g @mixedbread/mgrep
+# Semantic search (replaces grep with AI-powered search).
+# The mgrep CLI can also register its own plugin/marketplace for you:
+npm install -g @mixedbread/mgrep && mgrep install-claude-code
 
 # Browser automation (for web research and screenshots)
 npm install -g agent-browser && agent-browser install
 
-# Claude-mem worker service (for persistent memory)
-# Follow instructions at: https://github.com/thedotmack/claude-mem
+# Claude-mem persistent memory — install the worker + hooks (not just the SDK):
+npx claude-mem install
+# Note: a bare `npm install -g claude-mem` installs the SDK only, without hooks.
 ```
 
 ---
@@ -187,9 +227,9 @@ Then try these:
 4. **"What skills are available?"** — Lists loaded skills
 
 If something doesn't work, check:
-- API keys are set: `[[ -n "$EXA_API_KEY" ]] && echo "SET"` and `[[ -n "$GITHUB_TOKEN" ]] && echo "SET"`
-- Plugins installed: look in `~/.claude/plugins/`
-- MCP servers: `claude --mcp-debug` to diagnose
+- API key is set: `[[ -n "$EXA_API_KEY" ]] && echo "SET"`
+- Plugins installed: run `/plugin` (Installed tab) or look in `~/.claude/plugins/`
+- MCP servers: run `/mcp` inside Claude Code, or launch with `claude --debug` to diagnose
 
 ---
 
@@ -258,11 +298,28 @@ Once you've done research and found useful patterns:
 - *"Draft an article explaining [concept] for a non-technical audience"*
 - *"What kind of website would best showcase this work?"*
 
+### Choosing a Model
+
+Switch models any time with `/model`. As of mid-2026 the lineup is:
+
+| Model | Alias | Best for |
+|-------|-------|----------|
+| **Fable 5** | `fable` | Newest flagship — hardest reasoning and design tasks |
+| **Opus 4.8** | `opus` | Deep reasoning, complex multi-step work |
+| **Sonnet 4.6** | `sonnet` | Fast, capable daily driver for most coding/research |
+| **Haiku 4.5** | `haiku` | Quick, cheap, lightweight tasks |
+
+You don't have to pick perfectly — start on the default for your plan and switch
+up to `opus`/`fable` when a task is genuinely hard. `/model` shows what's available
+to your account. (Tip: `/fast` toggles faster Opus output on supported models.)
+
 ### Key Commands to Know
 
 | Command | What It Does |
 |---------|-------------|
 | `/help` | Show all available commands |
+| `/model` | Switch the active model (Fable 5 / Opus / Sonnet / Haiku) |
+| `/plugin` | Browse, install, enable, or update plugins |
 | `/compact` | Free up context space (use between task phases) |
 | `/learn:learn` | Extract reusable patterns from current session |
 | `/learn:sessions` | View and manage past sessions |
@@ -294,7 +351,8 @@ the skill-writing guide at `~/.claude/references/skill-writing-research.md`.
 After completing this guide, your setup includes:
 
 - **Global rules** that ensure Claude works carefully and research-first
-- **9 plugins** providing 130+ skills, 25+ agents, and dozens of commands
+- **9 plugins** providing 300+ skills, 65+ agents, and dozens of commands
+  (ECC 2.0 alone ships ~271 skills and ~67 agents)
 - **Semantic search** (mgrep) for finding information fast
 - **Persistent memory** (claude-mem) so Claude remembers across sessions
 - **Deep web research** (Exa) for academic and technical searches

@@ -1,25 +1,15 @@
 {
-  "_comment": "Copy to ~/.claude/.mcp.json. Set EXA_API_KEY and GITHUB_TOKEN in ~/.zshrc. Keep under 10 MCPs to preserve context window.",
+  "_comment": "Copy to ~/.claude/.mcp.json. Export EXA_API_KEY in ~/.zshrc (see SETUP-GUIDE Step 4). Keep this lean — Claude Code already has native file, search, and reasoning tools, and GitHub + live docs come from plugins (github, context7), not MCP entries. Keep under ~6 MCPs to preserve the context window.",
   "mcpServers": {
     "exa": {
       "command": "npx",
       "args": ["-y", "exa-mcp-server"],
-      "description": "Exa AI neural search — deep web research, code context, academic search (needs EXA_API_KEY in shell)"
+      "description": "Exa AI neural search — deep web research, code context, academic search. Reads EXA_API_KEY from your shell. Hosted alternative: replace this block with { \"type\": \"http\", \"url\": \"https://mcp.exa.ai/mcp\", \"headers\": { \"x-api-key\": \"${EXA_API_KEY}\" } }"
     },
-    "github": {
+    "fetch": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-github"],
-      "description": "GitHub API — repos, PRs, issues, code search (needs GITHUB_TOKEN in shell)"
-    },
-    "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "REPLACE_WITH_YOUR_HOME_DIRECTORY"],
-      "description": "Enhanced filesystem operations — read, write, search files. IMPORTANT: Replace REPLACE_WITH_YOUR_HOME_DIRECTORY with your actual home path (e.g., /Users/yourname on macOS, /home/yourname on Linux)"
-    },
-    "sequential-thinking": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
-      "description": "Multi-step reasoning — helps Claude think through complex problems step by step"
+      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "description": "Fetch and read a specific URL as clean markdown. Complements Exa: Exa finds pages, fetch reads them in full."
     }
   }
 }

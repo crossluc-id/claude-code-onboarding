@@ -81,5 +81,6 @@
   },
   "enabledPlugins": {},
   "effortLevel": "high",
-  "autoUpdates": true
+  "autoUpdates": true,
+  "autoUpdatesChannel": "stable"
 }

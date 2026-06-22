@@ -45,11 +45,12 @@ provide many pre-built agents (ECC has 25+).
 
 **What:** Scripts that run automatically at specific moments.
 **Where:** Configured in `~/.claude/settings.json` under `"hooks"`.
-**Trigger points:**
+**Trigger points (most common):**
 - **SessionStart** — when you open Claude Code
-- **PreToolUse** — before Claude reads/writes a file
+- **UserPromptSubmit** — when you send a message (before Claude sees it)
+- **PreToolUse** — before Claude reads/writes a file or runs a tool
 - **PostToolUse** — after Claude reads/writes a file
-- **Stop** — when Claude finishes responding
+- **Stop** / **SessionEnd** — when Claude finishes responding / the session ends
 
 **Example:** A hook that warns you if Claude writes `console.log` in your code.
 
@@ -107,7 +108,7 @@ Commands run when you type /something
 ## Further Reading
 
 After setup, these guides go deeper:
-- **ECC Shortform Guide:** `~/.claude/plugins/marketplaces/everything-claude-code/the-shortform-guide.md`
-- **ECC Longform Guide:** `~/.claude/plugins/marketplaces/everything-claude-code/the-longform-guide.md`
-- **Superpowers README:** `~/.claude/plugins/marketplaces/superpowers-dev/README.md`
+- **ECC Shortform Guide:** `~/.claude/plugins/marketplaces/ecc/the-shortform-guide.md`
+- **ECC Longform Guide:** `~/.claude/plugins/marketplaces/ecc/the-longform-guide.md`
+- **Superpowers:** https://github.com/obra/superpowers (README + docs)
 - **Skill Writing Research:** `~/.claude/references/skill-writing-research.md`

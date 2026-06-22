@@ -1,27 +1,33 @@
 # Claude Code Plugin Audit
 
-**Date**: 2026-04-05
-**Scope**: All plugins installed at `~/.claude/plugins/cache/`
+**Originally captured**: 2026-04-05 · **Versions refreshed**: 2026-06-22
+**Scope**: All plugins installed at `~/.claude/plugins/`
+
+> **Reading this as a snapshot:** the version numbers below are refreshed to
+> June 2026, but plugins move fast — always trust `/plugin` (Installed tab) and
+> each project's release tags over any table. The tier groupings further down
+> (which tool does what, when to use it) stay broadly accurate; treat exact
+> skill/command counts as approximate. Plugins auto-resolve to the latest
+> version on install, so you never type a version number yourself.
 
 ---
 
 ## Executive Summary
 
-| Plugin | Version | Skills | Commands | Agents | Hooks | Notes |
+| Plugin | Version (Jun 2026) | Skills | Commands | Agents | Hooks | Notes |
 |--------|---------|--------|----------|--------|-------|-------|
-| **everything-claude-code (ECC)** | 1.8.0 | 108 | 57 | 25 | 1 config | Mega-plugin: lang patterns, workflows, AI ops, business |
-| **superpowers** | 5.0.4 | 14 | 3 (deprecated) | 1 | 1 config | Core workflow disciplines (plan, TDD, review) |
-| **claude-mem** | 10.5.6 | 4 | 0 | 0 | 1 config | Persistent memory, plan/execute, AST search |
-| **commit-commands** | 78497c5 | 0 | 3 | 0 | 0 | Git commit, push, PR, branch cleanup |
-| **code-review** | 78497c5 | 0 | 1 | 0 | 0 | PR code review |
-| **mgrep** | 0.0.0 | 1 | 0 | 0 | hooks | Replaces built-in Grep/Glob/WebSearch |
-| **context7** | 78497c5 | 0 | 0 | 0 | 0 | MCP server for live library docs |
-| **voicemode** | 8.5.1p1 | 0 | 0 | 0 | 0 | MCP server for TTS/STT voice interaction |
-| **railway-skills** | - | 0 | 0 | 0 | 0 | Empty cache |
-| **supabase-agent-skills** | - | 0 | 0 | 0 | 0 | Empty cache |
-| Official: claude-md-management, code-simplifier, feature-dev, figma, github, hookify, security-guidance, supabase | various | 0 | 0 | 0 | 0 | Empty caches / MCP-only |
+| **ecc** (everything-claude-code) | 2.0.0 | ~271 | ~92 shims | ~67 | 1 config | Rebranded "Agent Harness OS" in 2.0; marketplace renamed `everything-claude-code` → `ecc` (handle `ecc@ecc`); now multi-harness |
+| **superpowers** | 6.0.3 | 14+ | 3 (deprecated) | 1 | 1 config | Now on `claude-plugins-official`; dev marketplace split to `obra/superpowers-marketplace` |
+| **claude-mem** | 13.8.0 | 4 | 0 | 0 | 1 config | Major jump from 10.x; persistent memory, plan/execute, AST search |
+| **compound-engineering** | 3.13.1 | — | several | — | — | Brainstorm→Plan→Work→Review loop; marketplace `compound-engineering-plugin` |
+| **commit-commands** | official | 0 | 3 | 0 | 0 | Git commit, push, PR, branch cleanup |
+| **code-review** | official | 0 | 1 | 0 | 0 | PR code review |
+| **mgrep** | 0.1.13 | 1 | 0 | 0 | hooks | Replaces built-in Grep/Glob/WebSearch (manifest self-reports `0.0.0`) |
+| **context7** | official | 0 | 0 | 0 | 0 | MCP server for live library docs |
+| **github** | official | 0 | 0 | 0 | 0 | Wraps GitHub's official MCP server (OAuth) |
+| **voicemode** | 8.7.1 | 0 | 0 | 0 | 0 | MCP server for TTS/STT voice interaction |
 
-**Totals**: ~127 skills, ~64 commands, ~26 agents across all plugins.
+**Totals**: ~290+ skills, ~100 commands, ~70 agents across all plugins (ECC 2.0 dominates the count).
 
 ---
 

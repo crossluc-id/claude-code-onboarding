@@ -6,17 +6,17 @@ After setting up, these resources help you go deeper.
 
 | Guide | Path | What You'll Learn |
 |-------|------|-------------------|
-| **ECC Shortform** | `~/.claude/plugins/marketplaces/everything-claude-code/the-shortform-guide.md` | Quick overview of setup, foundations, philosophy |
-| **ECC Longform** | `~/.claude/plugins/marketplaces/everything-claude-code/the-longform-guide.md` | Token optimization, memory, verification, parallelization |
-| **ECC Security** | `~/.claude/plugins/marketplaces/everything-claude-code/the-security-guide.md` | Security best practices |
+| **ECC Shortform** | `~/.claude/plugins/marketplaces/ecc/the-shortform-guide.md` | Quick overview of setup, foundations, philosophy |
+| **ECC Longform** | `~/.claude/plugins/marketplaces/ecc/the-longform-guide.md` | Token optimization, memory, verification, parallelization |
+| **ECC Security** | `~/.claude/plugins/marketplaces/ecc/the-security-guide.md` | Security best practices |
 | **Superpowers** | `~/.claude/plugins/marketplaces/superpowers-dev/README.md` | Structured workflows, TDD, debugging |
 | **Compound Engineering** | `~/.claude/plugins/marketplaces/compound-engineering-plugin/README.md` | Brainstorm → Plan → Work → Review loop |
 
 ## Online Resources
 
-- **Claude Code docs:** https://docs.anthropic.com/en/docs/claude-code
-- **ECC GitHub:** https://github.com/affaan-m/everything-claude-code
-- **Superpowers GitHub:** https://github.com/nichochar/superpowers
+- **Claude Code docs:** https://docs.claude.com/en/docs/claude-code
+- **ECC GitHub:** https://github.com/affaan-m/everything-claude-code (marketplace handle: `ecc@ecc`)
+- **Superpowers GitHub:** https://github.com/obra/superpowers
 - **Superpowers Blog:** https://blog.fsck.com/2025/10/09/superpowers/
 - **Superpowers Discord:** https://discord.gg/Jd8Vphy9jq
 - **Claude Code issues:** https://github.com/anthropics/claude-code/issues
