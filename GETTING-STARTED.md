@@ -95,13 +95,17 @@ You should see `v18` or higher (something like `v22.4.0`). If you see a version 
 
 ## Step 4: Install Claude Code
 
-Now install Claude Code itself:
+Now install Claude Code itself. The simplest way is the native installer:
 
 ```
-npm install -g @anthropic-ai/claude-code
+curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-This installs Claude Code globally on your machine. When it finishes, launch it:
+(On Windows, run `irm https://claude.ai/install.ps1 | iex` in PowerShell. If you
+prefer npm and already installed Node, `npm install -g @anthropic-ai/claude-code`
+also works.)
+
+This installs Claude Code on your machine. When it finishes, launch it:
 
 ```
 claude
@@ -196,20 +200,27 @@ cp -n lookup/project-context.json ~/.claude/lookup/
 
 ### Install core plugins
 
-Open a terminal and run these four commands:
+First register the two community marketplaces these plugins live in (one time):
 
 ```
-claude plugin install superpowers@superpowers-dev
+claude plugin marketplace add affaan-m/everything-claude-code
+claude plugin marketplace add EveryInc/compound-engineering-plugin
+```
+
+Then install the four core plugins:
+
+```
+claude plugin install superpowers@claude-plugins-official
 ```
 Core workflow skills -- brainstorming, test-driven development, debugging, planning.
 
 ```
-claude plugin install everything-claude-code@everything-claude-code
+claude plugin install ecc@ecc
 ```
-Comprehensive agent and skill library covering dozens of languages, frameworks, and workflows.
+Comprehensive agent and skill library covering dozens of languages, frameworks, and workflows. (Formerly `everything-claude-code` -- the marketplace was shortened to `ecc@ecc`.)
 
 ```
-claude plugin install compound-engineering@every-marketplace
+claude plugin install compound-engineering@compound-engineering-plugin
 ```
 Onboarding, code review, and planning tools.
 

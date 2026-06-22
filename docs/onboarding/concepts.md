@@ -89,9 +89,9 @@ claude plugin install <name>@<marketplace>
 
 | Plugin | What It Gives You |
 |--------|------------------|
-| `superpowers@superpowers-dev` | Core workflow skills -- brainstorming, test-driven development, debugging, and planning methodologies |
-| `everything-claude-code@everything-claude-code` | A comprehensive library of agents, skills, and patterns across many languages and domains |
-| `compound-engineering@every-marketplace` | Planning frameworks, code review processes, and onboarding workflows |
+| `superpowers@claude-plugins-official` | Core workflow skills -- brainstorming, test-driven development, debugging, and planning methodologies |
+| `ecc@ecc` | A comprehensive library of agents, skills, and patterns across many languages and domains (formerly `everything-claude-code`) |
+| `compound-engineering@compound-engineering-plugin` | Planning frameworks, code review processes, and onboarding workflows |
 | `claude-mem@thedotmack` | Persistent memory across sessions -- Claude remembers what it learned about you and your projects |
 
 These work together. Superpowers gives Claude structured ways to approach work. Everything Claude Code gives it a deep toolkit. Compound Engineering gives it a philosophy of making each task improve the next one. And claude-mem gives it continuity between sessions so the learning compounds over time.
