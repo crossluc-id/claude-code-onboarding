@@ -54,6 +54,17 @@ provide many pre-built agents (ECC has 25+).
 
 **Example:** A hook that warns you if Claude writes `console.log` in your code.
 
+**Heads-up — the `block-junk-docs` hook:** This kit ships a hook that stops Claude
+from creating stray `.md`/`.txt` files — only `README`, `CLAUDE`, `AGENTS`,
+`CONTRIBUTING`, `SKILL`, and `MEMORY` are allowed. It keeps projects tidy, but it
+will also block legitimate research notes like `notes.md` or `findings.txt`. If you
+*want* Claude to write notes, you have three options:
+
+1. Have Claude write into an allowed file (e.g. append to `README.md`), or use a
+   non-`.md`/`.txt` format.
+2. Widen the allowlist — edit the filename pattern in `~/.claude/hooks/block-junk-docs.js`.
+3. Remove the hook — delete its `Write` block from `~/.claude/settings.json`.
+
 ---
 
 ## 5. MCP Servers
