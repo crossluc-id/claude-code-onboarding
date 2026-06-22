@@ -1,0 +1,398 @@
+{
+  "version": "4.0.0",
+  "description": "Complete skill, command, and plugin routing with triggers and invocation patterns",
+  "last_updated": "2026-06-10",
+
+  "activation_notes": {
+    "how_skills_auto_activate": "SessionStart hook injects superpowers:using-superpowers → model checks Skill tool list before every action",
+    "subagent_gap": "Subagents spawned mid-session don't get the bootstrap. They rely on this routing file being referenced in ~/.claude/rules/agent-routing.md (auto-loaded globally).",
+    "commands_vs_skills": "Commands (in ~/.claude/commands/) and skills (in ~/.claude/skills/) both appear in the Skill tool. Commands use <dir>:<filename> namespace. Skills use their SKILL.md name field."
+  },
+
+  "plugins": {
+    "superpowers": {
+      "status": "ENABLED",
+      "priority": "HIGH - Process workflows, auto-injected at SessionStart",
+      "skills": {
+        "brainstorming": {
+          "invoke": "superpowers:brainstorming",
+          "triggers": ["design", "explore ideas", "before implementation", "new feature", "creative"],
+          "use_when": "BEFORE any implementation - refines ideas into designs",
+          "mandatory": true
+        },
+        "writing-plans": {
+          "invoke": "superpowers:writing-plans",
+          "triggers": ["plan", "implementation plan", "multi-step", "strategy"],
+          "use_when": "After brainstorming, before coding"
+        },
+        "executing-plans": {
+          "invoke": "superpowers:executing-plans",
+          "triggers": ["execute plan", "implement plan"],
+          "use_when": "When you have a written plan to execute"
+        },
+        "test-driven-development": {
+          "invoke": "superpowers:test-driven-development",
+          "triggers": ["tdd", "test first", "write tests", "coverage"],
+          "use_when": "Implementing ANY feature - write test first",
+          "mandatory": true
+        },
+        "systematic-debugging": {
+          "invoke": "superpowers:systematic-debugging",
+          "triggers": ["bug", "not working", "failing", "broken", "unexpected"],
+          "use_when": "ANY bug or failure - investigate root cause FIRST",
+          "mandatory": true,
+          "note": "NEVER jump to fixes without this"
+        },
+        "requesting-code-review": {
+          "invoke": "superpowers:requesting-code-review",
+          "triggers": ["review my code", "check this", "before merge"],
+          "use_when": "After implementing features"
+        },
+        "receiving-code-review": {
+          "invoke": "superpowers:receiving-code-review",
+          "triggers": ["review feedback", "address comments", "review response"],
+          "use_when": "Responding to code review feedback with technical rigor"
+        },
+        "verification-before-completion": {
+          "invoke": "superpowers:verification-before-completion",
+          "triggers": ["verify", "done", "complete", "ready"],
+          "use_when": "BEFORE claiming work is done",
+          "mandatory": true
+        },
+        "dispatching-parallel-agents": {
+          "invoke": "superpowers:dispatching-parallel-agents",
+          "triggers": ["parallel", "concurrent", "multiple tasks"],
+          "use_when": "2+ independent tasks that can run simultaneously"
+        },
+        "subagent-driven-development": {
+          "invoke": "superpowers:subagent-driven-development",
+          "triggers": ["complex implementation", "spec then implement"],
+          "use_when": "Complex implementation with spec/implement/review cycle"
+        },
+        "using-git-worktrees": {
+          "invoke": "superpowers:using-git-worktrees",
+          "triggers": ["worktree", "isolated branch", "feature isolation"],
+          "use_when": "Starting feature work that needs isolation"
+        },
+        "finishing-a-development-branch": {
+          "invoke": "superpowers:finishing-a-development-branch",
+          "triggers": ["merge", "done with branch", "integrate"],
+          "use_when": "When implementation complete, deciding how to integrate"
+        },
+        "writing-skills": {
+          "invoke": "superpowers:writing-skills",
+          "triggers": ["create skill", "edit skill", "new skill", "skill deployment"],
+          "use_when": "Creating, editing, or verifying skills"
+        }
+      }
+    },
+
+    "commit-commands": {
+      "status": "ENABLED",
+      "note": "Also available via git: command family (same functionality)",
+      "skills": {
+        "commit": {
+          "invoke": "commit-commands:commit",
+          "triggers": ["commit", "save changes", "git commit"],
+          "use_when": "Creating git commits",
+          "also_available_as": "git:commit"
+        },
+        "commit-push-pr": {
+          "invoke": "commit-commands:commit-push-pr",
+          "triggers": ["push", "pr", "pull request", "create pr"],
+          "use_when": "Commit, push, and open PR in one flow",
+          "also_available_as": "git:commit-push-pr"
+        },
+        "clean_gone": {
+          "invoke": "commit-commands:clean_gone",
+          "triggers": ["clean branches", "prune branches"],
+          "use_when": "Cleaning up deleted remote branches",
+          "also_available_as": "git:clean_gone"
+        }
+      }
+    },
+
+    "claude-md-management": {
+      "status": "ENABLED",
+      "skills": {
+        "revise-claude-md": {
+          "invoke": "claude-md-management:revise-claude-md",
+          "triggers": ["update claude.md", "revise claude.md"],
+          "use_when": "Adding learnings to CLAUDE.md"
+        },
+        "claude-md-improver": {
+          "invoke": "claude-md-management:claude-md-improver",
+          "triggers": ["audit claude.md", "improve claude.md", "check claude.md"],
+          "use_when": "Auditing and improving CLAUDE.md quality"
+        }
+      }
+    },
+
+    "claude-mem": {
+      "status": "ENABLED",
+      "skills": {
+        "make-plan": {
+          "invoke": "claude-mem:make-plan",
+          "triggers": ["plan with docs", "documentation discovery"],
+          "use_when": "Creating plans with documentation discovery"
+        },
+        "do": {
+          "invoke": "claude-mem:do",
+          "triggers": ["execute with subagents"],
+          "use_when": "Executing plans using subagents"
+        },
+        "mem-search": {
+          "invoke": "claude-mem:mem-search",
+          "triggers": ["search memory", "did we already", "how did we", "previous session", "past work"],
+          "use_when": "Searching cross-session persistent memory"
+        }
+      }
+    },
+
+    "feature-dev": {
+      "status": "ENABLED",
+      "skills": {
+        "feature-dev": {
+          "invoke": "feature-dev:feature-dev",
+          "triggers": ["feature development", "guided feature", "codebase understanding"],
+          "use_when": "Guided feature development with architecture focus"
+        }
+      }
+    },
+
+    "code-review": {
+      "status": "ENABLED",
+      "skills": {
+        "code-review": {
+          "invoke": "code-review:code-review",
+          "triggers": ["review", "check code", "code quality", "before commit", "after implementation"],
+          "use_when": "Standard code review after any implementation"
+        }
+      }
+    },
+
+    "code-simplifier": {
+      "status": "ENABLED",
+      "skills": {
+        "simplify": {
+          "invoke": "simplify",
+          "triggers": ["simplify code", "clean up code", "improve readability", "code clarity"],
+          "use_when": "Improving code clarity and consistency while preserving functionality"
+        }
+      }
+    },
+
+    "context7": {
+      "status": "ENABLED",
+      "skills": {
+        "resolve-library-id": {
+          "invoke": "mcp__plugin_context7_context7__resolve-library-id",
+          "triggers": ["library docs", "framework docs", "API reference"],
+          "use_when": "Looking up current documentation for any library or framework"
+        }
+      }
+    },
+
+    "mcp-server-dev": {
+      "status": "ENABLED",
+      "skills": {
+        "build-mcp-server": {
+          "invoke": "mcp-server-dev:build-mcp-server",
+          "triggers": ["build mcp", "create mcp", "mcp server", "mcp integration"],
+          "use_when": "Building MCP servers or integrations"
+        }
+      }
+    },
+
+    "voicemode": {
+      "status": "ENABLED",
+      "skills": {
+        "voicemode": {
+          "invoke": "voicemode:voicemode",
+          "triggers": ["voice", "speak", "talk", "converse"],
+          "use_when": "Voice interaction with Claude Code"
+        }
+      }
+    },
+
+    "vercel": {
+      "status": "ENABLED",
+      "skills": {
+        "nextjs": {
+          "invoke": "vercel:nextjs",
+          "triggers": ["next.js", "nextjs", "app router", "server components"],
+          "use_when": "Building or debugging Next.js applications"
+        },
+        "deploy": {
+          "invoke": "vercel:deploy",
+          "triggers": ["deploy", "vercel deploy", "production"],
+          "use_when": "Deploying to Vercel"
+        },
+        "ai-sdk": {
+          "invoke": "vercel:ai-sdk",
+          "triggers": ["ai sdk", "chat interface", "streaming", "tool calling"],
+          "use_when": "Building AI-powered features with Vercel AI SDK"
+        }
+      }
+    },
+
+    "mgrep": {
+      "status": "ENABLED",
+      "priority": "REPLACES built-in search tools when invoked",
+      "skills": {
+        "mgrep": {
+          "invoke": "mgrep",
+          "triggers": ["search", "find", "grep", "look for", "where is"],
+          "use_when": "Semantic local file search or web search",
+          "note": "Use mgrep for semantic queries, built-in Grep for exact string matches"
+        }
+      }
+    },
+
+    "postgres-best-practices": {
+      "status": "ENABLED",
+      "skills": {
+        "supabase-postgres-best-practices": {
+          "invoke": "supabase-postgres-best-practices",
+          "triggers": ["postgresql", "postgres", "sql", "query optimization", "indexing", "schema design", "RLS", "row level security", "connection pooling", "supabase"],
+          "use_when": "Writing, reviewing, or optimizing Postgres queries, schema, or database config"
+        }
+      }
+    },
+
+    "railway": {
+      "status": "ENABLED",
+      "skills": {
+        "use-railway": {
+          "invoke": "use-railway",
+          "triggers": ["railway", "deploy", "railway up", "railway login", "infrastructure", "railway service", "nixpacks", "Procfile"],
+          "use_when": "Railway infrastructure operations — deploy, configure, troubleshoot"
+        }
+      }
+    }
+  },
+
+  "command_families": {
+    "_note": "Slash commands from ~/.claude/commands/ subdirectories. Invoked as /<dir>:<name> or via Skill tool.",
+
+    "git": {
+      "note": "Enhanced user copies with conventional commits, safety rules, and fetch --prune. Also available via commit-commands plugin.",
+      "commands": {
+        "commit": {
+          "invoke": "git:commit",
+          "triggers": ["commit", "git commit"],
+          "use_when": "Create a git commit with conventional prefix"
+        },
+        "commit-push-pr": {
+          "invoke": "git:commit-push-pr",
+          "triggers": ["push", "pr", "pull request"],
+          "use_when": "Commit, push, and open a PR in one flow"
+        },
+        "clean_gone": {
+          "invoke": "git:clean_gone",
+          "triggers": ["clean branches", "prune gone"],
+          "use_when": "Clean up branches marked as [gone]"
+        }
+      }
+    },
+
+    "learn": {
+      "commands": {
+        "learn": {
+          "invoke": "learn:learn",
+          "triggers": ["learn from session", "extract patterns"],
+          "use_when": "Analyze session and extract reusable patterns as skills"
+        },
+        "sessions": {
+          "invoke": "learn:sessions",
+          "triggers": ["session history", "list sessions", "load session"],
+          "use_when": "Manage Claude Code session history — list, load, alias, edit"
+        }
+      }
+    },
+
+    "meta": {
+      "commands": {
+        "generate_command": {
+          "invoke": "meta:generate_command",
+          "triggers": ["create command", "new slash command"],
+          "use_when": "Create a new custom slash command"
+        },
+        "skill-create": {
+          "invoke": "meta:skill-create",
+          "triggers": ["extract patterns", "generate skill from history"],
+          "use_when": "Analyze local git history to extract coding patterns and generate SKILL.md"
+        }
+      }
+    },
+
+    "workflows": {
+      "commands": {
+        "work": {
+          "invoke": "workflows:work",
+          "triggers": ["execute work", "work plan"],
+          "use_when": "Execute work plans efficiently while maintaining quality",
+          "note": "User copy kept — has Bun-specific customization"
+        }
+      }
+    },
+
+    "what-next": {
+      "note": "Top-level command, no family prefix",
+      "commands": {
+        "what-next": {
+          "invoke": "what-next",
+          "triggers": ["what next", "what should I do", "suggest work"],
+          "use_when": "Get suggestions for what to work on next"
+        }
+      }
+    }
+  },
+
+  "custom_skills": {
+    "_note": "Skills in ~/.claude/skills/ with SKILL.md. Invoked via Skill tool by bare name.",
+
+    "agent-browser": {
+      "source": "user:~/.claude/skills/agent-browser",
+      "triggers": ["browse website", "fill form", "click button", "take screenshot", "scrape page", "web automation"],
+      "use_when": "Browser automation via Vercel agent-browser CLI"
+    },
+    "continuity": {
+      "source": "user:~/.claude/skills/continuity",
+      "triggers": ["persistent task", "context compaction", "resume work", "task ledger"],
+      "use_when": "Multi-step tasks that need to survive context compaction"
+    },
+    "search-first": {
+      "source": "user:~/.claude/skills/search-first",
+      "triggers": ["research first", "find existing", "before writing custom code"],
+      "use_when": "Research existing tools and patterns before writing custom code"
+    },
+    "strategic-compact": {
+      "source": "user:~/.claude/skills/strategic-compact",
+      "triggers": ["compact context", "context window", "preserve context", "manual compaction"],
+      "use_when": "Manual context compaction at logical task intervals"
+    },
+    "db-migrate": {
+      "note": "Example of a project-specific skill that may live in a project repo rather than globally",
+      "triggers": ["migrate database", "run migrations", "db:push", "db:migrate"],
+      "use_when": "Database migrations — check project-level skills",
+      "availability": "project-specific"
+    }
+  },
+
+  "skill_priority": {
+    "order": [
+      "1. Process skills (superpowers) - determine HOW to approach",
+      "2. Search (EXA MCP / context7) - external research",
+      "3. Project-specific skills (db-migrate and any project-local skills)",
+      "4. Command families (git:, learn:, meta:) - structured workflows",
+      "5. Utility plugins (commit-commands, claude-mem, voicemode)"
+    ],
+    "mandatory_skills": [
+      "superpowers:brainstorming - before creative/implementation work",
+      "superpowers:systematic-debugging - before fixing bugs",
+      "superpowers:test-driven-development - before implementing features",
+      "superpowers:verification-before-completion - before claiming done"
+    ]
+  }
+}

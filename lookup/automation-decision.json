@@ -1,0 +1,228 @@
+{
+  "version": "3.0.0",
+  "description": "Workflow decision tree for Claude Code",
+  "last_updated": "2026-02-23",
+
+  "workflows": {
+    "new_feature": {
+      "planning": {
+        "skills": ["superpowers:brainstorming", "superpowers:writing-plans"],
+        "agents": ["architect", "architecture-strategist"],
+        "patterns": ["coding-standards", "backend-patterns", "frontend-patterns"],
+        "output": "Design spec, implementation plan"
+      },
+      "implementation": {
+        "skills": ["superpowers:test-driven-development", "tdd-workflow"],
+        "agents": ["tdd-guide"],
+        "yourself": true,
+        "output": "Tested code with 80%+ coverage"
+      },
+      "review": {
+        "skills": ["superpowers:requesting-code-review"],
+        "agents": ["code-reviewer", "code-simplifier"],
+        "checks": ["typecheck", "tests", "security"]
+      },
+      "quality": {
+        "skills": ["superpowers:verification-before-completion", "verification-loop", "commit-commands:commit"],
+        "gates": ["bun run typecheck", "bun run test"]
+      }
+    },
+
+    "bug_fix": {
+      "investigation": {
+        "skills": ["superpowers:systematic-debugging"],
+        "mandatory": true,
+        "note": "ALWAYS investigate root cause BEFORE proposing fixes"
+      },
+      "implementation": {
+        "skills": ["superpowers:test-driven-development"],
+        "pattern": "Write failing test first, then fix"
+      },
+      "review": {
+        "agents": ["code-reviewer"]
+      },
+      "quality": {
+        "skills": ["commit-commands:commit"]
+      }
+    },
+
+    "refactoring": {
+      "analysis": {
+        "agents": ["refactor-cleaner", "architecture-strategist"],
+        "output": "Code smells, anti-patterns, duplication"
+      },
+      "planning": {
+        "skills": ["superpowers:writing-plans"],
+        "agents": ["architect"]
+      },
+      "implementation": {
+        "agents": ["refactor-cleaner", "code-simplifier"],
+        "yourself": true,
+        "rule": "Incremental changes, maintain test coverage"
+      },
+      "validation": {
+        "agents": ["code-reviewer"],
+        "skills": ["verification-loop"]
+      }
+    },
+
+    "database_work": {
+      "schema_design": {
+        "agents": ["database-reviewer"],
+        "skills": ["postgres-patterns"],
+        "output": "Schema design, type generation"
+      },
+      "migration": {
+        "skills": ["db-migrate"],
+        "commands": {
+          "my-project": "bun run db:migrate"
+        },
+        "note": "Migration command varies per project — define it in the project's own config"
+      },
+      "optimization": {
+        "agents": ["database-reviewer"],
+        "skills": ["postgres-patterns"]
+      }
+    },
+
+    "build_errors": {
+      "resolution": {
+        "agents": ["build-error-resolver"],
+        "never_use": ["Explore"],
+        "note": "Minimal diffs only, no architectural changes"
+      },
+      "verification": {
+        "commands": ["bun run typecheck", "bun run build"]
+      }
+    },
+
+    "security_audit": {
+      "review": {
+        "agents": ["security-reviewer"],
+        "skills": ["security-review"],
+        "triggers": ["auth", "user input", "API endpoints", "secrets"]
+      }
+    },
+
+    "testing": {
+      "unit_integration": {
+        "agents": ["tdd-guide"],
+        "skills": ["superpowers:test-driven-development", "tdd-workflow"]
+      },
+      "e2e": {
+        "agents": ["e2e-runner"],
+        "note": "Playwright for browser tests"
+      }
+    },
+
+    "documentation": {
+      "update": {
+        "agents": ["doc-updater"],
+        "skills": [],
+        "note": "ONLY when explicitly requested"
+      },
+      "claude_md": {
+        "skills": ["claude-md-management:revise-claude-md", "claude-md-management:claude-md-improver"]
+      }
+    },
+
+    "research": {
+      "best_practices": {
+        "agents": ["best-practices-researcher | doc-updater"],
+        "skills": ["coding-standards", "backend-patterns", "frontend-patterns", "postgres-patterns"]
+      },
+      "codebase_exploration": {
+        "skills": ["mgrep:mgrep", "iterative-retrieval"],
+        "note": "Use mgrep for semantic search, iterative-retrieval for subagent context"
+      }
+    },
+
+    "browser_automation": {
+      "interaction": {
+        "skills": ["agent-browser"],
+        "use_when": "Web page interaction, form filling, scraping"
+      },
+      "reference": {
+        "skills": ["agent-browser-reference"],
+        "use_when": "Quick CLI command lookup for agent-browser"
+      }
+    },
+
+    "knowledge_management": {
+      "capture": {
+        "skills": ["compound-docs"],
+        "use_when": "Documenting solved problems for reuse"
+      },
+      "learning": {
+        "skills": ["continuous-learning-v2"],
+        "use_when": "Session observation, instinct creation, skill evolution"
+      },
+      "todos": {
+        "skills": ["file-todos"],
+        "use_when": "File-based todo tracking and triage"
+      },
+      "context": {
+        "skills": ["strategic-compact"],
+        "use_when": "Manual context compaction at logical intervals"
+      }
+    },
+
+    "skill_development": {
+      "creation": {
+        "skills": ["create-agent-skills", "skill-creator", "superpowers:writing-skills"],
+        "use_when": "Creating, editing, or refining skills"
+      }
+    }
+  },
+
+  "quick_reference": {
+    "use_agents_when": [
+      "Build errors (build-error-resolver)",
+      "Code review (code-reviewer)",
+      "Code simplification (code-simplifier)",
+      "Dead code cleanup (refactor-cleaner)",
+      "Database work (database-reviewer)",
+      "Security concerns (security-reviewer)",
+      "Architecture planning (architect)",
+      "Architecture review (architecture-strategist)",
+      "Pattern analysis (refactor-cleaner)",
+      "Unit/integration tests (tdd-guide)",
+      "E2E browser tests (e2e-runner)",
+      "External research (best-practices-researcher | doc-updater)",
+      "Documentation (doc-updater, only when asked)"
+    ],
+    "use_skills_when": [
+      "Starting new feature (superpowers:brainstorming)",
+      "Planning implementation (superpowers:writing-plans)",
+      "Debugging bugs (superpowers:systematic-debugging)",
+      "Before commit (superpowers:verification-before-completion, verification-loop)",
+      "Review feedback (superpowers:receiving-code-review)",
+      "Creating skills (superpowers:writing-skills, create-agent-skills, skill-creator)",
+      "Git operations (commit-commands:commit)",
+      "Database migrations (db-migrate)",
+      "Searching code (mgrep:mgrep)",
+      "Browser automation (agent-browser)",
+      "Capturing knowledge (compound-docs)",
+      "Context management (strategic-compact, iterative-retrieval)",
+      "Todo management (file-todos)",
+      "Pattern reference (coding-standards, backend-patterns, frontend-patterns, postgres-patterns)"
+    ],
+    "do_yourself_when": [
+      "Simple file edits",
+      "Quick code additions",
+      "Straightforward implementations",
+      "Reading specific files"
+    ]
+  },
+
+  "common_patterns": {
+    "feature": "brainstorming → writing-plans → tdd → implement → code-review → verify → commit",
+    "bugfix": "systematic-debugging → test-first → fix → code-review → commit",
+    "refactor": "pattern-recognition → plan → refactor-cleaner/code-simplifier → validate",
+    "database": "database-reviewer → postgres-patterns → db-migrate → verify",
+    "build_error": "build-error-resolver → typecheck → done",
+    "skill_creation": "create-agent-skills/skill-creator → writing-skills → verify",
+    "browser_task": "agent-browser-reference → agent-browser → verify",
+    "knowledge_capture": "compound-docs → file-todos (if follow-ups needed)"
+  }
+}

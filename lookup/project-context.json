@@ -1,0 +1,90 @@
+{
+  "version": "1.0.0",
+  "description": "Project context, phases, and typical tasks — per-project map",
+  "last_updated": "2026-02-23",
+  "_comment": "TEMPLATE — replace the example projects below with your own. This file maps each of your repos to its stack, phase, typical tasks, key files, and hooks so Claude Code can route work correctly. Keep paths and project names local to your machine; do not commit secrets.",
+
+  "projects": {
+    "my-research-project": {
+      "path": "~/Github/my-research-project",
+      "description": "Short one-line description of what this project does",
+      "stack": ["Bun", "TypeScript", "PostgreSQL", "Drizzle ORM"],
+      "architecture": "e.g. Backend service / Frontend SPA / Multi-agent system",
+
+      "current_phase": "active_development",
+      "active_features": [
+        "Feature one",
+        "Feature two"
+      ],
+
+      "typical_tasks": {
+        "database": {
+          "command": "bun run db:push",
+          "agent": "database-reviewer",
+          "skill": "db-migrate",
+          "note": "Describe the migration approach (e.g. direct schema sync vs migration files)"
+        },
+        "build": {
+          "command": "bun run build",
+          "typecheck": "bun run typecheck",
+          "agent_on_fail": "build-error-resolver"
+        },
+        "testing": {
+          "command": "bun run test",
+          "coverage": "bun run test:coverage"
+        }
+      },
+
+      "key_files": {
+        "schema": "src/db.ts",
+        "config": "src/config.ts"
+      },
+
+      "hooks": {
+        "PostToolUse": "schema edit → typecheck"
+      }
+    },
+
+    "my-frontend-app": {
+      "path": "~/Github/my-frontend-app",
+      "description": "Example frontend SPA project",
+      "stack": ["Bun", "TypeScript", "React", "TanStack Router"],
+      "architecture": "Frontend SPA",
+
+      "current_phase": "frontend_development",
+
+      "typical_tasks": {
+        "development": {
+          "command": "bun run dev",
+          "build": "bun run build",
+          "typecheck": "bun run typecheck"
+        }
+      },
+
+      "hooks": {
+        "PreToolUse": "branch enforcement (edit branch only)"
+      },
+
+      "skills_note": "Project-local skills live in <project>/.claude/skills/ — not in global ~/.claude/skills/"
+    }
+  },
+
+  "common_commands": {
+    "all_projects": {
+      "typecheck": "bun run typecheck",
+      "build": "bun run build",
+      "test": "bun run test"
+    },
+    "package_manager": "bun (adjust to your project's package manager)"
+  },
+
+  "task_routing_by_project": {
+    "my-research-project": {
+      "database_changes": "database-reviewer + db:push",
+      "build_failures": "build-error-resolver"
+    },
+    "my-frontend-app": {
+      "frontend_features": "frontend-patterns skill + project-local skills"
+    }
+  }
+}

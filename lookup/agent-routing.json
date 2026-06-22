@@ -1,0 +1,125 @@
+{
+  "version": "2.0.0",
+  "description": "Task-to-agent routing with trigger keywords",
+  "last_updated": "2026-06-10",
+
+  "agents": {
+    "core": {
+      "build-error-resolver": {
+        "path": "~/.claude/agents/core/build-error-resolver.md",
+        "triggers": [
+          "build fails", "build failing", "build error",
+          "type error", "typescript error", "tsc error",
+          "cannot find module", "module not found",
+          "compilation error", "compile error",
+          "npm run build failed", "bun run build failed"
+        ],
+        "use_when": "Any build or type error occurs",
+        "never_use": "For refactoring, architecture changes, or adding features",
+        "priority": "CRITICAL - Use INSTEAD of Explore for build issues"
+      },
+
+      "refactor-cleaner": {
+        "path": "~/.claude/agents/core/refactor-cleaner.md",
+        "triggers": [
+          "dead code", "unused code", "cleanup",
+          "consolidate", "remove duplicates", "simplify"
+        ],
+        "use_when": "Removing dead code, consolidating modules"
+      }
+    },
+
+    "review_test": {
+
+      "database-reviewer": {
+        "path": "~/.claude/agents/review+test/database-reviewer.md",
+        "triggers": [
+          "database", "postgresql", "postgres", "sql",
+          "migration", "schema", "query", "drizzle",
+          "db:push", "db:migrate", "indexes"
+        ],
+        "use_when": "Any database work - schema, queries, migrations",
+        "priority": "CRITICAL - Use INSTEAD of Explore for database work",
+        "companion_skill": "supabase-postgres-best-practices — invoke for Postgres optimization patterns"
+      },
+
+      "security-reviewer": {
+        "path": "~/.claude/agents/review+test/security-reviewer.md",
+        "triggers": [
+          "security", "authentication", "auth",
+          "user input", "validation", "api endpoint",
+          "secrets", "tokens", "credentials", "injection"
+        ],
+        "use_when": "Before deployment, when handling auth or user input"
+      },
+
+      "tdd-guide": {
+        "path": "~/.claude/agents/review+test/tdd-guide.md",
+        "triggers": [
+          "tdd", "test driven", "write tests",
+          "test first", "testing strategy", "coverage"
+        ],
+        "use_when": "Implementing features with TDD methodology"
+      },
+
+      "e2e-runner": {
+        "path": "~/.claude/agents/review+test/e2e-runner.md",
+        "triggers": [
+          "e2e", "end to end", "playwright",
+          "browser test", "user flow", "integration test"
+        ],
+        "use_when": "Writing or running E2E tests"
+      },
+
+      "code-simplifier": {
+        "source": "plugin:code-simplifier",
+        "triggers": [
+          "simplify code", "clean up code", "improve readability",
+          "code clarity", "maintainability", "refine code",
+          "make code cleaner", "reduce complexity"
+        ],
+        "use_when": "Improving code clarity and consistency while preserving functionality"
+      }
+    },
+
+    "research_docs": {
+      "doc-updater": {
+        "path": "~/.claude/agents/research+docs/doc-updater.md",
+        "triggers": [
+          "update docs", "documentation",
+          "update codemaps", "readme"
+        ],
+        "use_when": "ONLY when explicitly requested to update documentation"
+      }
+    }
+  },
+
+  "routing_rules": {
+    "priority_order": [
+      "1. Check if a specific skill handles the task",
+      "2. Check if a specialized agent matches the task type",
+      "3. If agent has availability: project-specific and is not found, use its fallback_to agent",
+      "4. Use generic exploration ONLY when no specialized tool exists"
+    ],
+
+    "fallback_convention": "Agents marked availability: project-specific may live in project codebases. When unavailable locally, use the fallback_to agent instead.",
+
+    "model_policy": "User agents (build-error-resolver, database-reviewer, security-reviewer, tdd-guide, e2e-runner, doc-updater) use model: opus intentionally for quality. Plugin agents may use sonnet/inherit — this divergence is expected.",
+
+    "never_use_explore_for": [
+      "Build errors → use build-error-resolver",
+      "Code review → use code-reviewer",
+      "Database work → use database-reviewer",
+      "Security concerns → use security-reviewer",
+      "Refactoring → use refactor-cleaner"
+    ],
+
+    "mandatory_agents": {
+      "after_code_written": ["code-reviewer"],
+      "before_commit": ["code-reviewer"],
+      "build_failures": ["build-error-resolver"],
+      "database_changes": ["database-reviewer"],
+      "auth_code": ["security-reviewer"]
+    }
+  }
+}

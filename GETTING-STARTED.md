@@ -168,7 +168,6 @@ cp -n rules/cross-caller-consistency.md ~/.claude/rules/
 cp -n rules/hooks.md ~/.claude/rules/
 cp -n rules/schema.md ~/.claude/rules/
 cp -n rules/search.md ~/.claude/rules/
-cp -n rules/voice-readout.md ~/.claude/rules/
 ```
 
 The `-n` flag means "don't overwrite" -- if you already have any of these files, your versions are preserved.
