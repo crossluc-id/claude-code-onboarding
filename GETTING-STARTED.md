@@ -151,13 +151,17 @@ mkdir -p ~/.claude/skills
 
 ### Copy baseline rules
 
-Rules shape how Claude approaches work -- like giving a collaborator a style guide. First, navigate to the workspace folder in your terminal. If you opened it in Zed, the terminal panel is already in the right place. Otherwise:
+Rules shape how Claude approaches work -- like giving a collaborator a style guide.
+
+**First, move your terminal into the folder you downloaded.** This is essential: every `cp` command below copies *from* this folder, so your terminal must be inside it.
 
 ```
 cd /path/to/your/workspace
 ```
 
-Replace `/path/to/your/workspace` with wherever you saved the folder you received (e.g., `cd ~/Downloads/workspace` or `cd ~/Desktop/workspace`).
+Replace `/path/to/your/workspace` with wherever you saved the folder (e.g., `cd ~/Downloads/claude-code-onboarding`).
+
+**Checkpoint:** type `ls` and press Enter. You should see `rules`, `contexts`, `lookup`, and `README.md`. If you don't, you're in the wrong folder — `cd` to the right place before continuing, or the copy commands will fail.
 
 Now copy the rule files:
 
@@ -227,6 +231,8 @@ Onboarding, code review, and planning tools.
 claude plugin install claude-mem@thedotmack
 ```
 Persistent memory across sessions -- Claude remembers what you've worked on together and learns from it over time.
+
+**Checkpoint:** run `claude`, then ask *"What plugins do you have?"* — you should see superpowers, ecc, compound-engineering, and claude-mem. If one is missing, re-run its `install` line. (Red text during install usually means the marketplace wasn't added — re-run the `marketplace add` commands above first.)
 
 
 ## Step 7: Your First Project

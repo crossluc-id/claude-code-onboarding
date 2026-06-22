@@ -2,6 +2,10 @@
 
 A step-by-step walkthrough from zero to fully configured.
 
+> **Which guide am I in?** This is the **technical / power-user** track. If you're
+> new to terminals, **GETTING-STARTED.md** is the gentler path — come back here
+> when you want the full setup (more plugins, optional API keys, project scaffolding).
+
 ---
 
 ## Step 1: Install Claude Code
@@ -88,12 +92,14 @@ cp references/*.md ~/.claude/references/
 
 ---
 
-## Step 4: Set Up Environment Variables
+## Step 4: Set Up Environment Variables (Optional)
 
-Some tools need API keys. Add these to your shell profile (`~/.zshrc` or `~/.bashrc`):
+**You can skip this whole step — Claude Code works fully without any API keys.**
+These only unlock extra research power, and you can add them later. To add one,
+put it in your shell profile (`~/.zshrc` or `~/.bashrc`):
 
 ```bash
-# Required for Exa neural search (get key at https://exa.ai)
+# Optional — Exa neural search (deep web research). Free tier at https://exa.ai
 export EXA_API_KEY="your-exa-api-key-here"
 
 # Optional — only if you use the gh CLI or a token-based GitHub setup.
@@ -108,8 +114,9 @@ source ~/.zshrc  # or source ~/.bashrc
 ```
 
 **What these do:**
-- **EXA_API_KEY** — Powers deep web research. Exa is a neural search engine
-  that finds relevant content much better than Google for research tasks.
+- **EXA_API_KEY** — Optional. Powers deep web research. Exa is a neural search
+  engine that finds relevant content much better than Google for research tasks.
+  Without it, Claude still searches the web via mgrep and the fetch MCP.
   Free tier available at https://exa.ai.
 - **GITHUB_TOKEN** — Optional. The `github` plugin now signs in with GitHub via
   OAuth, so you no longer need a personal access token for normal use. Set one
@@ -156,7 +163,9 @@ recommended plugins live in community marketplaces you register once:
 > `everything-claude-code@everything-claude-code` to **`ecc@ecc`**;
 > compound-engineering's marketplace is **`compound-engineering-plugin`**; and
 > superpowers is now on the official marketplace, so no extra marketplace-add is
-> needed for it.
+> needed for it. Note too that a marketplace's name doesn't always match its repo:
+> you `add mixedbread-ai/mgrep` but `install mgrep@Mixedbread-Grep` — the part after
+> `@` is the marketplace's internal name, not the GitHub repo.
 
 **What each plugin does:**
 
@@ -222,7 +231,7 @@ claude
 Then try these:
 
 1. **"What plugins do you have?"** — Should list all installed plugins
-2. **"Search the web for mathematical frameworks in hairstyling"** — Tests Exa/mgrep
+2. **"Search the web for a recent paper on a topic you care about"** — Tests web search (works via mgrep even without an Exa key)
 3. **"/help"** — Shows available commands
 4. **"What skills are available?"** — Lists loaded skills
 
@@ -236,22 +245,21 @@ If something doesn't work, check:
 ## Step 8: Create Your First Project
 
 ```bash
-mkdir -p ~/research/math-hairstyling
-cd ~/research/math-hairstyling
+mkdir -p ~/research/my-first-project
+cd ~/research/my-first-project
 git init
 
-# Create a project-specific CLAUDE.md
+# Create a project-specific CLAUDE.md (edit it to match your own topic)
 cat > CLAUDE.md << 'EOF'
-# Math Hairstyling Framework
+# My First Project
 
 ## Project Context
-This project explores mathematical frameworks for hairstyling and haircutting.
+Describe in a sentence or two what this project is about.
 
 ## Research Goals
-- Cross-reference with existing mathematical models
-- Explore publication formats
-- Design workshop curriculum
-- Build web presence
+- (List what you want to explore or achieve)
+- Cross-reference with existing work
+- Explore publication or output formats
 
 ## Working Method
 - Research deeply before drawing conclusions
@@ -359,6 +367,6 @@ After completing this guide, your setup includes:
 - **GitHub integration** for version control and collaboration
 - **Browser automation** for web research and screenshots
 - **Context management** hooks that prevent losing work during long sessions
-- **A project folder** ready for your mathematical hairstyling research
+- **A project folder** ready for your first research project
 
 Welcome to Claude Code!
