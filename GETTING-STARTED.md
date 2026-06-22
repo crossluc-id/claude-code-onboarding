@@ -62,7 +62,7 @@ One reassurance: you can't break anything by typing commands. If something goes 
 
 ## Step 3: Install the Foundations
 
-Two things need to be installed before Claude Code: Homebrew (a package manager -- like an app store for terminal tools) and Node.js (a runtime that Claude Code needs to work).
+Two things need to be installed before Claude Code: Homebrew (a package manager -- like an app store for terminal tools) and Node.js (a runtime that Claude Code's plugins and tools rely on).
 
 ### Install Homebrew
 
@@ -101,9 +101,8 @@ Now install Claude Code itself. The simplest way is the native installer:
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-(On Windows, run `irm https://claude.ai/install.ps1 | iex` in PowerShell. If you
-prefer npm and already installed Node, `npm install -g @anthropic-ai/claude-code`
-also works.)
+(If you prefer npm and already installed Node in Step 3,
+`npm install -g @anthropic-ai/claude-code` also works.)
 
 This installs Claude Code on your machine. When it finishes, launch it:
 
@@ -203,12 +202,15 @@ cp -n lookup/project-context.json ~/.claude/lookup/
 
 ### Install core plugins
 
-First register the two community marketplaces these plugins live in (one time):
+First register the community marketplaces these plugins live in (one time):
 
 ```
 claude plugin marketplace add affaan-m/everything-claude-code
 claude plugin marketplace add EveryInc/compound-engineering-plugin
+claude plugin marketplace add thedotmack/claude-mem
 ```
+
+(`superpowers` lives on the built-in official marketplace, so it needs no `add`.)
 
 Then install the four core plugins:
 
